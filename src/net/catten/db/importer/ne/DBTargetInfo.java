@@ -6,7 +6,6 @@ package net.catten.db.importer.ne;
 public class DBTargetInfo {
     private String serverName;
     private String dbName;
-    private String tableName;
     private String username;
     private String password;
 
@@ -24,14 +23,6 @@ public class DBTargetInfo {
 
     public void setDbName(String dbName) {
         this.dbName = dbName;
-    }
-
-    public String getTableName() {
-        return tableName;
-    }
-
-    public void setTableName(String tableName) {
-        this.tableName = tableName;
     }
 
     public String getUsername() {
