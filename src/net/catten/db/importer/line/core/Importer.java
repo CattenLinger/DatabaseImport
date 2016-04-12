@@ -191,6 +191,7 @@ public class Importer {
                     ps.setString(i + 2, data[i]);
                 }
                 ps.execute();
+                dataPool.remove(s);
             }catch (Throwable e){
                 System.out.printf("error at %d, skip : %s , cause %s\n",count,s,e.toString());
                 errors++;
