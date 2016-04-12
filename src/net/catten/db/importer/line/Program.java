@@ -1,4 +1,6 @@
-package net.catten.db.importer.ne;
+package net.catten.db.importer.line;
+
+import net.catten.db.importer.line.core.Importer;
 
 import java.io.*;
 import java.sql.Connection;
@@ -11,8 +13,7 @@ public class Program {
     public static void main(String[] args) throws Throwable {
         File[] files = null;
         Connection connection = null;
-        DBImporter dbImporter;
-        //DBTargetInfo dbTargetInfo = new DBTargetInfo();
+        Importer importer;
         Properties properties = new Properties();
 
         try{
@@ -23,14 +24,14 @@ public class Program {
                 properties = handleArgs(args);
             }
 
-            files = checkFilePath(properties.getProperty("target.path"),DBImporter.getFileFilter());
+            files = checkFilePath(properties.getProperty("target.path"), Importer.getFileFilter());
 
             if (files != null) {
-                dbImporter = new DBImporter(files,properties);
-                dbImporter.setNoRepeat("f".equals(properties.getProperty("importer.repeatable")));
-                dbImporter.setPreRead("t".equals(properties.getProperty("importer.pre-read")));
-                connection = dbImporter.connectionFactory();
-                dbImporter.startHandleFileList(connection);
+                importer = new Importer(files,properties);
+                importer.setNoRepeat("f".equals(properties.getProperty("importer.repeatable")));
+                importer.setPreRead("t".equals(properties.getProperty("importer.pre-read")));
+                connection = importer.connectionFactory();
+                importer.startHandleFileList(connection);
             }
         }catch (Exception e){
             e.printStackTrace();

@@ -1,4 +1,4 @@
-package net.catten.db.importer.ne;
+package net.catten.db.importer.line.core;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

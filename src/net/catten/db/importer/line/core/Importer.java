@@ -1,4 +1,6 @@
-package net.catten.db.importer.ne;
+package net.catten.db.importer.line.core;
+
+import net.catten.db.importer.line.model.TargetInfo;
 
 import java.io.*;
 import java.sql.*;
@@ -7,35 +9,32 @@ import java.util.*;
 /**
  * Created by Catten on 2016/4/6.
  */
-public class DBImporter{
+public class Importer {
 
     private File[] files;
-    //private Queue<File> fileQueue;
-    private DBTargetInfo targetDBInfo;
-    private Properties properties;
+    private TargetInfo targetDBInfo;
     private RawDataReader rawDataReader;
 
     private boolean noRepeat;
     private boolean preRead;
 
-    public DBImporter(File[] fileList, Properties properties) throws ClassNotFoundException {
+    public Importer(File[] fileList, Properties properties) throws ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");
         this.files = fileList;
         this.targetDBInfo = readInfoFormProperties(properties);
-        this.properties = properties;
         rawDataReader = new RawDataReader(properties);
     }
 
-    private static DBTargetInfo readInfoFormProperties(Properties properties){
-        DBTargetInfo dbTargetInfo = new DBTargetInfo();
-        dbTargetInfo.setServerName(properties.getProperty("server.name"));
-        dbTargetInfo.setDbName(properties.getProperty("server.db"));
-        dbTargetInfo.setUsername(properties.getProperty("server.username"));
-        dbTargetInfo.setPassword(properties.getProperty("server.password"));
-        return dbTargetInfo;
+    private static TargetInfo readInfoFormProperties(Properties properties){
+        TargetInfo targetInfo = new TargetInfo();
+        targetInfo.setServerName(properties.getProperty("server.name"));
+        targetInfo.setDbName(properties.getProperty("server.db"));
+        targetInfo.setUsername(properties.getProperty("server.username"));
+        targetInfo.setPassword(properties.getProperty("server.password"));
+        return targetInfo;
     }
 
-    //File filter for DBImporter
+    //File filter for Importer
     private static FilenameFilter fileFilter = new FilenameFilter() {
         @Override
         public boolean accept(File dir, String name) {
@@ -204,11 +203,11 @@ public class DBImporter{
     }
 
     //Create connection
-    public Connection connectionFactory(DBTargetInfo dbTargetInfo) throws SQLException {
+    public Connection connectionFactory(TargetInfo targetInfo) throws SQLException {
         Connection connection = DriverManager.getConnection(
-                dbTargetInfo.getDBLink(),
-                dbTargetInfo.getUsername(),
-                dbTargetInfo.getPassword()
+                targetInfo.getDBLink(),
+                targetInfo.getUsername(),
+                targetInfo.getPassword()
         );
         System.out.println("Get connection successful.");
         return connection;

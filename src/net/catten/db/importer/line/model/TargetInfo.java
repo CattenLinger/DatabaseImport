@@ -1,9 +1,9 @@
-package net.catten.db.importer.ne;
+package net.catten.db.importer.line.model;
 
 /**
  * Created by Catten on 2016/4/6.
  */
-public class DBTargetInfo {
+public class TargetInfo {
     private String serverName;
     private String dbName;
     private String username;
