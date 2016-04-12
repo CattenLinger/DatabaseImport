@@ -27,7 +27,7 @@ server.db=targetDatabase		要导入的数据库
 server.username=username		数据库用户
 server.password=password		数据库密码
 importer.repeatable=[t/f]		是否允许有重复的主键（以第一个字段作为主键，这将强制开启预读模式）
-reader.pre-read=[t/f]			是否先把文件预读到内存再导入。
+importer.pre-read=[t/f]			是否先把文件预读到内存再导入。
 reader.split=char				每一行的字段分隔符
 reader.sql=sqlExp				SQL语句，用问号"?"代替字段数据。
 

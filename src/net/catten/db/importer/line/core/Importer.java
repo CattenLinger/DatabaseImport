@@ -133,9 +133,7 @@ public class Importer {
                 }
             }while (line != null);
         }
-
         psql.close();
-        System.out.println("\nFinished.(" + (endTime - startTime) / 1000 +"s used)");
         if (errors > 0) System.out.println("[!] With " + errors + " warning(s), please check the output.");
     }
 

@@ -93,7 +93,7 @@ public class Program {
         System.out.println("server.username=username\t\tDatabase user");
         System.out.println("server.password=password\t\tDatabase password");
         System.out.println("importer.repeatable=[t/f]\t\tAllow repeated primary key or not(according to first field)");
-        System.out.println("reader.pre-read=[t/f]\t\t\tRead file to RAM before import to database.");
+        System.out.println("importer.pre-read=[t/f]\t\t\tRead file to RAM before import to database.");
         System.out.println("reader.split=char\t\t\t\tSplit char for lines");
         System.out.println("reader.sql=sqlExp\t\t\t\tSql expression, use '?' instead field data.");
         System.out.println("\t* This feature will force enable pre-reading for preparing files, ensure you have enough physical memory.");
