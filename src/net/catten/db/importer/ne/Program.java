@@ -81,7 +81,7 @@ public class Program {
 
     //Print help information.
     private static void printHelp(){
-        System.out.println("Database Import Helper 1.0 by CattenLinger");
+        System.out.println("Database Import Helper 2.0 by CattenLinger");
         System.out.println("DBImporter.jar -c [config file]");
         System.out.println("-c  | --config\t\tConfig file.");
         System.out.println("-h  | --help\t\tThis info");
